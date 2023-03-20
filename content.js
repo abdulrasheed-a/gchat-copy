@@ -193,11 +193,13 @@ function main() {
                             return;
                         }
                         const container = document.createElement('div');
-                        // Quote svg icon
+                        // Reply svg icon
                         container.innerHTML = `
-                            <svg viewBox="0 0 24 24" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" style="margin-top: 4px">
-                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 8v3.701c0 2.857-1.869 4.779-4.5 5.299l-.498-1.063c1.219-.459 2.001-1.822 2.001-2.929h-2.003v-5.008h5zm6 0v3.701c0 2.857-1.869 4.779-4.5 5.299l-.498-1.063c1.219-.459 2.001-1.822 2.001-2.929h-2.003v-5.008h5z"/>
-                            </svg>`;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                            fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16"> 
+                            <title>Reply</title>
+                            <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/> 
+                        </svg>`;
                         container.className=addreactionButton.className;
                         container.setAttribute('data-tooltip', 'Quote Message');
                         const quoteSVG = container.children[0]
@@ -282,15 +284,8 @@ function makeInputText(name, quoteText, inputEl, messageContainer) {
             oneLineQuote += ' ...';
         }
     }
-
-    if(isDM) {
-        return oneLineQuote ? '`' + oneLineQuote + '`\n' :
-            ("```\n" + quoteText + "\n```\n" + inputEl.innerHTML)
-    } else {
-
-        return oneLineQuote ? '`' + name + ': ' + oneLineQuote + '`\n' :
-            ("```\n" + name + ":\n" + quoteText + "\n```\n" + inputEl.innerHTML);
-    }
+    return oneLineQuote ? '`' + oneLineQuote + '`\n' :
+    ("```\n" + quoteText + "\n```\n" + inputEl.innerHTML);
 }
 
 function getQuoteText(messageContainer) {
